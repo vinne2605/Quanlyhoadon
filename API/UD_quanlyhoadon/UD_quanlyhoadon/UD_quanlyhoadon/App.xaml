@@ -1,0 +1,10 @@
+﻿<Application x:Class="UD_quanlyhoadon.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:UD_quanlyhoadon"
+             xmlns:localModel="clr-namespace:UD_quanlyhoadon.Models"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <localModel:CHanghoa x:Key="rsHanghoa"/>
+    </Application.Resources>
+</Application>

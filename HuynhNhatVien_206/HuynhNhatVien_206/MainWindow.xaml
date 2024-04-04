@@ -1,0 +1,80 @@
+﻿<Window x:Class="HuynhNhatVien_206.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HuynhNhatVien_206"
+        xmlns:localModels="clr-namespace:HuynhNhatVien_206.Model"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="localModels:CMyCommands.lenhThem" x:Name="lenhThem" Executed="lenhThem_Executed" CanExecute="lenhThem_CanExecute"></CommandBinding>
+    </Window.CommandBindings>
+    <StackPanel>
+        <Expander Header="Form nhập phòng thuê">
+            <StackPanel>
+            <Grid x:Name="gridPhong" DataContext="{StaticResource rsPhong}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>   
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Mã phòng"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Tình trạng"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Height="25" Text="{Binding Maphong}"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Height="25" Text="{Binding Tinhtrang}"/>
+                    <Button Grid.Row="1" Grid.Column="4" Content="Thêm phòng" Command="localModels:CMyCommands.lenhThem" />
+            </Grid>
+            <Grid Margin="5,5" x:Name="dgtacgia">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Chon loai phong"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Mã loai"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="So nguoi"/>
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="Don gia"/>
+
+                <ComboBox Grid.Row="2" Grid.Column="0" x:Name="cmdMaloai" SelectedValuePath="Maloai" DisplayMemberPath="Maloai" SelectedValue="{Binding Maloai}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="True" Text="{Binding ElementName=cmdMaloai,Path=SelectedItem.Songuoi}"/>
+                    <TextBox Grid.Row="2" Grid.Column="2" IsReadOnly="True" Text="{Binding ElementName=cmdMaloai,Path=SelectedItem.Dongia}"/>
+            </Grid>
+            </StackPanel>
+        </Expander>
+        <Expander Header="Danh sách phòng">
+            <StackPanel>
+                <DataGrid Margin="5,5" x:Name="dgPhong" AutoGenerateColumns="False" SelectedValuePath="Maphong">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã phòng" Binding="{Binding Maphong}"/>
+                        <DataGridTextColumn Header="Tình trạng phòng" Binding="{Binding Tinhtrang}"/>
+                        <DataGridTextColumn Header="Mã loại phòng" Binding="{Binding Maloai}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Xóa" x:Name="btnXoa"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Expander>
+    </StackPanel>
+</Window>

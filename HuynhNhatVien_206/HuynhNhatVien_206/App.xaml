@@ -1,0 +1,10 @@
+﻿<Application x:Class="HuynhNhatVien_206.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HuynhNhatVien_206"
+             xmlns:localModels="clr-namespace:HuynhNhatVien_206.Model"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <localModels:CPhong x:Key="rsPhong"/>
+    </Application.Resources>
+</Application>

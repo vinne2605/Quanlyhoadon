@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "95LnGAsnBc2LWvQyVZJpMfCv1De/c39AkaDmZtNZHb8=",
+  "Source": "webapi_hoadon",
+  "BasePath": "_content/webapi_hoadon",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
